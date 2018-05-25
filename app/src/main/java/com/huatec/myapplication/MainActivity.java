@@ -42,6 +42,9 @@ public class MainActivity extends InstrumentedActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
     }
 
+     /**
+     * 极光后台发送自定义消息时运行
+     */
     public class MessageReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -54,7 +57,7 @@ public class MainActivity extends InstrumentedActivity {
                     if (!ExampleUtil.isEmpty(extras)) {
                         showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
                     }
-                    //自定义消息为：showMsg.toString()
+                    //该Activity可见时，才会打印消息。
                     Log.d(TAG, "onReceive: "+showMsg.toString());
                 }
             } catch (Exception e){
